@@ -22,3 +22,13 @@ disk_usage.pl
 
 # to delete a backup set
 rm -rf BACKUPS/backupname/20140517134528
+
+# To automate the script, you will need to install an ssh key without passphrase
+ssh-keygen
+scp .ssh/id_rsa.pub user@machine2backup:/tmp
+ssh user@machine2backup
+cat /tmp/id_rsa.pub >> ~/.ssh/authorized_keys
+
+# confgure a crontab to start the backup at 3:20AM every night
+20 3 * * * backups/start_backup.pl >>backups/backup.log 2>&1
+
