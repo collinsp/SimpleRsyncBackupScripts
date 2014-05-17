@@ -1,0 +1,6 @@
+# put back up name first followed by rsync command
+# ommit rsync destination path
+backupNameHere : rsync --verbose --stats -a -e ssh --rsync-path='sudo rsync' --delete --exclude logs 'somehere@foomachine.com:/opt/foo/'
+
+# some other backup
+otherbacknamehere : rsync --verbose --stats -a -e ssh --delete --exclude '*/temp/*' --exclude '*/ROOT.war.20*' --exclude '*/ROOT.mb' --exclude '*/ROOT.last*' --exclude '*.tmp' --exclude '*/ROOT.20*' --exclude t --exclude util --exclude '*.log' --exclude '*.log.*' --exclude logs --exclude ROOT.war --exclude backup 'you@foo.com:'
