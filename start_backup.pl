@@ -25,7 +25,8 @@ if (! $fh) {
 }
 while (<$fh>) {
   chomp;
-  next unless /\w/ || /^\s*\#/;
+  next if /^\s*\#/;
+  next unless /\w/;
   my $rsync_cmd = $_;
   my $site;
   if ($rsync_cmd =~ s/\s*(\w+)\s*\:\s*//) {
